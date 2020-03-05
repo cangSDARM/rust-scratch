@@ -77,5 +77,4 @@ Rust中，语句没有返回值，而表达式有，这是他俩的重要区别<
 4. `fu func() ->i32 { 5 }`是有效的声明，函数func返回5
 5. `let y = { lex x = 3; x+1 }`是有效的声明，y的值是x+1即4
 
-## 所有权Ownership
-Rust通过所有权管理内存，使得无需Rust垃圾回收，也不用像c那样复杂地手动管理
+## [所有权Ownership](./doc/ownership.md)
