@@ -1,4 +1,5 @@
 # Rust
+## Quick Look
 print!  是宏
 print   是函数
 

@@ -31,14 +31,23 @@ fn whileing() {
 }
 
 fn foring() {
+  //遍历数组
   for i in [1, 2, 3].iter() {
-    //遍历数组
+    //.iter()返回每个元素
     println!("{}", i);
   }
-
+  //遍历range
   for i in (1..4).rev() {
-    //遍历range
     println!("{}", i);
+  }
+  //遍历字符串
+  let bytes = "sss".as_bytes(); //将字符串转为字节数组
+  for (i, &item) in bytes.iter().enumerate() {
+    //enumerate返回包装好的元素对象，更方便
+    //&提取元素引用，而不转移所有权
+    if item == b' ' {
+      print!("{}", i);
+    }
   }
 }
 

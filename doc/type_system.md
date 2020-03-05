@@ -1,7 +1,8 @@
 # 类型系统
 [return](../README.md)
 
-## 标量(Scalar)类型
+## 栈上的数据
+### 标量(Scalar)类型
 代表一个单独的值，Rust有四种基本标量类型<br>
 1. **整型**
     |长度|有符号|无符号|
@@ -32,7 +33,7 @@
 4. **字符char**
     - 默认为unicode标量类型。可以赋值为任意unicode字符
     - 使用`'`(单引号)包裹
-## 复合(Compound)类型
+### 复合(Compound)类型
 用于将多个值组合为一个类型，Rust有两种基本复合类型<br>
 1. **元祖tuple**
     - 例子：`let tup: (i32, f64, u8) = (40, 8.3, 1);`
@@ -43,3 +44,14 @@
     - 数组长度是固定的(可变的是vector)
     - 所有内容的类型都是一致的
     - 数组Rust存在栈(stack)上
+
+## 堆/硬编码的数据
+### String
+```rs
+//字面量
+let s = "hello";  //将硬编码到程序中，s类型是&str
+
+//String
+let mut s = String::from("hello");  //存储在堆中
+s.push_str(", world")  //在后面追加值
+```
