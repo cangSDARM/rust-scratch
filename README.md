@@ -39,7 +39,7 @@ let sum = x + y;  //Error!
 - doc<br>
 | [Cargo](./doc/cargo.md)<br>
 | [模块化](./doc/modularize.md)<br>
-| [类型系统](./doc/type_system.md)<br>
+| [基础数据类型](./doc/base_type.md)<br>
 | [所有权Ownership](./doc/ownership.md)<br>
 | [结构体(Rust中的对象)](./doc/sturcture.md)<br>
 | [枚举(Rust中对结构体的更高级封装?)](./doc/enums.md)<br>
