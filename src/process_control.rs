@@ -69,10 +69,11 @@ fn matching(num: i32) {
   match io::stdin().read_line(&mut s) {
     Ok(n) => println!("read {} bytes", n),
     Err(_) => println!("err happend"),
-    // _ 表示忽略该参数，若在 match 中使用，表示default情况
+    // _ 表示忽略该参数
     //参数也可以是一个具体的值
   };
   //注意的是，match可以返回值
+  //match的默认值(default)可以随意起名字，但是该名字需要用到。不用的话使用 _ 代替
 
   //if let
   {
