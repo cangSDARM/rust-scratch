@@ -60,15 +60,34 @@ fn matching(num: i32) {
       print!("greater");
       print!("OK");
     }
-  }
+  };
   // match 表示模式匹配，和switch相似。
   // 当 match 匹配时将自动break
-  //FIXME: if break, how to continue? else, how break
   // 且 match 可以传递参数，如：
+  // 注意 match块 后的逗号。这会将这个match变成一个语句，而不是表达式
   let mut s = String::new();
   match io::stdin().read_line(&mut s) {
     Ok(n) => println!("read {} bytes", n),
     Err(_) => println!("err happend"),
     // _ 表示忽略该参数，若在 match 中使用，表示default情况
-  }
+    //参数也可以是一个具体的值
+  };
+  //注意的是，match可以返回值
+
+  //if let
+  {
+    //对于只有一个分支的match的语法糖
+    let some = Some(1);
+    match some {
+      Some(n) => print!("{}", n),
+      _ => (),
+    }
+
+    //等价于
+    if let Some(n) = some {
+      print!("{}", n);
+    } else {
+      ()
+    }
+  };
 }
