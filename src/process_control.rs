@@ -2,6 +2,7 @@ use std::cmp::Ordering;
 // Ordering 也是枚举类型，包含 Less、Equal、Greater
 use std::io;
 
+#[allow(dead_code)]
 fn ifing(num: u8) {
   let number = if num < 10 {
     //表达式Rust不会自动转换为bool，需要自己转换
@@ -16,20 +17,23 @@ fn ifing(num: u8) {
   println!("{}", number);
 }
 
+#[allow(dead_code)]
 fn looping() {
-  let i = loop {
+  let _i = loop {
     println!("looping");
 
     break 1; //退出最近的loop，并赋值给变量(如果有的话)
   };
 }
 
+#[allow(dead_code)]
 fn whileing() {
   while 1 < 2 {
     break;
   }
 }
 
+#[allow(dead_code)]
 fn foring() {
   //遍历数组
   for i in [1, 2, 3].iter() {
@@ -51,6 +55,7 @@ fn foring() {
   }
 }
 
+#[allow(dead_code)]
 fn matching(num: i32) {
   match 1.cmp(&num) {
     //cmp比较对象

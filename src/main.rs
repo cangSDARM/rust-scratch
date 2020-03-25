@@ -1,9 +1,13 @@
 use rand::Rng;
 use std::io; //和cpp类似，但是用的use
 
+mod generics;
+mod lifecricle;
 mod process_control; //使用process_control模块(和文件名相同)
+mod traits;
 
 // main 函数是主入口函数，和dart类似
+#[allow(dead_code)]
 fn main() {
     const MAX_SIZE: u32 = 100_0000;
     // const创建常量

@@ -43,7 +43,8 @@ let sum = x + y;  //Error!
 | [所有权Ownership](./doc/ownership.md)<br>
 | [结构体(Rust中的对象)](./doc/sturcture.md)<br>
 | [枚举(Rust中对结构体的更高级封装?)](./doc/enums.md)<br>
-| [错误处理](./doc/error_handle)<br>
+| [错误处理](./doc/error_handle.md)<br>
 - src<br>
 | [基础语法](./src/main.rs)<br>
 | [流程控制](./src/process_control.rs)<br>
+| [泛型](./src/generics.rs)、[trait](./src/traits.rs)以及[生命周期](./src/lifecricle.rs)<br>
