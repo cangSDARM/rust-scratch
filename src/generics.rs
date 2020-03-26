@@ -6,6 +6,8 @@ enum Optionx<T> {
 }
 
 /// 泛型函数
+///
+/// 参见`traits.rs`中的*trait bound*来消除 引用。T 需实现 Copy/Clone trait
 fn _generics<T>(list: &[T]) -> &T {
   &list[0]
 }
@@ -18,8 +20,9 @@ struct Point<T, U> {
 }
 
 /// 泛型方法
+///
+/// 注意**必须在 impl 后面声明 T**。在 impl 之后声明泛型 T ，表示 Point 的尖括号中的类型是泛型而不是具体类型
 impl<T, U> Point<T, U> {
-  //注意必须在 impl 后面声明 T 。在 impl 之后声明泛型 T ，表示 Point 的尖括号中的类型是泛型而不是具体类型
   fn _x(&self) -> &T {
     &self.x
   }
@@ -53,3 +56,5 @@ fn _mix() {
 }
 
 //Rust 通过在编译时进行 单态化(monomorphization) 来保证泛型的效率
+
+//更多有关泛型高级用法（涉及tarit的）参看`traits.rs`

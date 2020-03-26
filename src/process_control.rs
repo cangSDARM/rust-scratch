@@ -93,7 +93,7 @@ fn matching(num: i32) {
     if let Some(n) = some {
       print!("{}", n);
     } else {
-      ()
+      ();
     }
   };
 }
