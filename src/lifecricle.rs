@@ -32,6 +32,17 @@ fn _longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 struct ImportantExcerpt<'a> {
   part: &'a str,
 }
+/// 带生命周期注解的 impl 块
+///
+/// 类似于泛型，impl和类型后都需要写
+///
+/// 该例子适用于下面的省略规则的1,2
+impl<'a> ImportantExcerpt<'a> {
+  fn _level(&self, another: &str) -> &str {
+    format!("{}", another);
+    self.part
+  }
+}
 
 /// 生命周期注解省略规则(lifetime elision rules)
 ///
@@ -47,13 +58,5 @@ struct ImportantExcerpt<'a> {
 ///   *参考目录中写到*：第三条规则真正能够适用的就只有方法签名
 #[allow(unused_variables)]
 fn _elision(s: &str) -> &str {
-  let bytes = s.as_bytes();
-
-  for (i, &item) in bytes.iter().enumerate() {
-    if item == b' ' {
-      return &s[0..i];
-    }
-  }
-
   &s[..]
 }

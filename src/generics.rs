@@ -58,3 +58,4 @@ fn _mix() {
 //Rust 通过在编译时进行 单态化(monomorphization) 来保证泛型的效率
 
 //更多有关泛型高级用法（涉及tarit的）参看`traits.rs`
+//涉及生命周期的，参看`lifecricle.rs`
