@@ -54,6 +54,7 @@ String和&str都是以`utf-8`格式所保存(因此涉及到多字节的问题)<
 //字面量
 let s = "hello";  //将硬编码到程序中
 // s类型是&str(严格说是 &'static str )
+// 因为其生命周期为整个程序期间，参看(../src/lifecricle.rs)
 let st = s.to_string(); //字面量需要to_string后才是String
 
 //String

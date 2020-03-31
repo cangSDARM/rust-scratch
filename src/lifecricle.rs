@@ -36,7 +36,7 @@ struct ImportantExcerpt<'a> {
 ///
 /// 类似于泛型，impl和类型后都需要写
 ///
-/// 该例子适用于下面的省略规则的1,2
+/// 该例子适用于下面的省略规则的1,3
 impl<'a> ImportantExcerpt<'a> {
   fn _level(&self, another: &str) -> &str {
     format!("{}", another);
@@ -59,4 +59,29 @@ impl<'a> ImportantExcerpt<'a> {
 #[allow(unused_variables)]
 fn _elision(s: &str) -> &str {
   &s[..]
+}
+
+/// 静态生命周期注解
+/// 生命周期能够存活于整个程序期间
+/// 所有的字符串字面值都拥有 'static 生命周期
+#[allow(unused_variables)]
+fn _static_life() {
+  //这是字面量，参看(../doc/base_type.md)
+  let s: &'static str = "I have a static lifetime.";
+}
+
+use std::fmt::Display;
+/// 生命周期注解、trait、泛型和引用共同使用的例子
+///
+/// 用于返回两个字符串 slice 中较长者
+fn _longest_with<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+where
+  T: Display,
+{
+  println!("Announcement! {}", ann);
+  if x.len() > y.len() {
+    x
+  } else {
+    y
+  }
 }
