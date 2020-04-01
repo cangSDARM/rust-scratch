@@ -1,4 +1,6 @@
 # Structure
+[返回](../README.md)
+
 Rust中，是基于结构体构建对象的
 ```rs
 struct User {
@@ -69,7 +71,7 @@ struct Union;
 
 **结构体的打印并不和基本类型相似**
 ```rs
-#[device(Debug)]  //需要这个才能打印。这个称为trait注解
+#[device(Debug)]  //需要这个才能打印。这个称为trait注解。参看`../src/traits.rs`
 struct User{}
 
 {

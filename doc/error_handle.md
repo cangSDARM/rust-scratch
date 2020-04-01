@@ -1,10 +1,12 @@
 # 错误处理
+[返回](../README.md)
+
 Rust 将错误组合成两个主要类别：
 1. 可恢复错误，使用`Result<T, E>`处理
 2. 不可恢复错误，使用`panic!`处理
 ## 不可恢复
 默认Rust会处理自己遗留的内容，可以选择直接终止把处理权上抛给系统
-```yml
+```toml
 # Cargo.rs
 [profile.release]
 panic = 'abort'

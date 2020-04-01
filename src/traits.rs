@@ -106,3 +106,9 @@ impl<T: Display> Summary for T {
     String::from("1")
   }
 }
+
+
+/// 有些 trait 经常被实现，且实现时逻辑相似。因此Rust有快速实现这些的语法糖，称为 可派生的trait
+/// 使用 #[derive()] 属性包裹
+#[derive(Display)]
+struct Dis {}
