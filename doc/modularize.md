@@ -62,14 +62,14 @@ mod sound {
 sound::instrument::clarinet();
 
 //use
-use crate::sound::instrument;
+use crate_name::sound::instrument;
 instrument::clarinet();
 
 //use 相对路径
 // 也可以加super
 use self::sound::instrument;  // self 是必须的, for now
 
-use crate::sound::instrument as Ins;  // as 用法同其他语言
+use crate_name::sound::instrument as Ins;  // as 用法同其他语言
 ```
 > use后，依旧可以按照旧方式调用
 
