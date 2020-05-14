@@ -1,10 +1,22 @@
+#Crate发布是永久性的。对应版本不可能被覆盖，其代码也不可能被删除。crates.io 的一个主要目标是作为一个存储代码的永久文档服务器
 [package]
 name = "rust-scratch"
 version = "0.1.0"
 authors = ["AllenLee <648384410li@gmail.com>"]
 edition = "2018"
+description = "Learn rust from scratch"
+license = "MIT OR Apache-2.0"
 
 # See more crates in https://crates.io
 
 [dependencies]
 rand = "0.7.3"
+# 依赖可以使用相对路径
+minigrep = { path = "./minigrep" }
+
+[profile.dev]
+# 控制 Rust 进行何种程度的优化，从 0 -> 3
+opt-level = 0
+
+[profile.release]
+opt-level = 3
