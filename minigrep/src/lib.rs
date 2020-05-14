@@ -1,20 +1,22 @@
 use std::{env, error::Error, fs};
 
-pub struct Config<'a> {
-  pub query: &'a str,
-  pub file_name: &'a str,
+pub struct Config {
+  pub query: String,
+  pub file_name: String,
   pub sensitive: bool,
 }
 
-impl<'a> Config<'a> {
-  pub fn new(args: &[String]) -> Result<Config, &'static str> {
-    if args.len() != 3 {
-      return Err("not enough arguments");
-    }
-
+impl Config {
+  pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
     Ok(Config {
-      query: &args[1],
-      file_name: &args[2],
+      query: match args.next() {
+        Some(arg) => arg,
+        None => return Err("Didn't get a query string"),
+      },
+      file_name: match args.next() {
+        Some(arg) => arg,
+        None => return Err("Didn't get a file name"),
+      },
       sensitive: !env::var("CASE_SENSITIVE").is_err(),
     })
   }
@@ -35,28 +37,18 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
   Ok(())
 }
 
-pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-  let query = query.to_lowercase();
-  let mut results = Vec::new();
-
-  for line in contents.lines() {
-    if line.to_lowercase().contains(&query) {
-      results.push(line.trim());
-    }
-  }
-
-  results
+fn search_case_insensitive<'a>(query: String, contents: &'a str) -> Vec<&'a str> {
+  contents
+    .lines()
+    .filter(|line| line.to_lowercase().contains(&query.to_lowercase()))
+    .collect()
 }
 
-fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-  let mut results = Vec::new();
-
-  for line in contents.lines() {
-    if line.contains(query) {
-      results.push(line.trim());
-    }
-  }
-  results
+fn search<'a>(query: String, contents: &'a str) -> Vec<&'a str> {
+  contents
+    .lines()
+    .filter(|line| line.contains(&query))
+    .collect()
 }
 
 #[cfg(test)]
@@ -64,7 +56,7 @@ mod test {
   use super::*;
   #[test]
   fn case_sensitive() {
-    let query = "duct";
+    let query = String::from("duct");
     let contents = "\
   Rust:
   safe, fast, productive.
@@ -76,7 +68,7 @@ mod test {
 
   #[test]
   fn case_insensitive() {
-    let query = "rUsT";
+    let query = String::from("rUsT");
     let contents = "\
   Rust:
   safe, fast, productive.

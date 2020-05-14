@@ -85,4 +85,33 @@ let config = Config::new(&args).unwrap_or_else(|err| {
 
 // Restrcuture: 9, Use Env rather a row string
 
+// Restrcuture: 10 (optional), Use iter rather a ref
+let config = Config::new(env::args()).unwrap_or_else(|err| {}
+impl Config {
+  pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
+    Ok(Config {
+      query: match args.next() {
+        Some(arg) => arg,
+        None => return Err("Didn't get a query string"),
+      },
+      file_name: match args.next() {
+        Some(arg) => arg,
+        None => return Err("Didn't get a file name"),
+      },
+      sensitive: !env::var("CASE_SENSITIVE").is_err(),
+    })
+  }
+}
+fn search<'a>(query: String, contents: &'a str) -> Vec<&'a str> {
+  contents
+    .lines()
+    .filter(|line| line.contains(&query))
+    .collect()
+}
+pub fn search_case_insensitive<'a>(query: String, contents: &'a str) -> Vec<&'a str> {
+  contents
+    .lines()
+    .filter(|line| line.to_lowercase().contains(&query.to_lowercase()))
+    .collect()
+}
 ```
