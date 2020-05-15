@@ -51,3 +51,4 @@ let sum = x + y;  //Error!
 | [泛型](./src/generics.rs)、[trait](./src/traits.rs)以及[生命周期](./src/lifecricle.rs)<br>
 | [匿名函数及闭包](./src/anonymous_function.rs)<br>
 | [迭代器](./src/iterator.rs)<br>
+| [智能指针](./src/smart_pointer.rs)<br>
