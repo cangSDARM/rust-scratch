@@ -164,6 +164,12 @@ fn dangle() -> &String { // dangle 返回一个字符串的引用
 } // 这里 s 离开作用域并被丢弃。其内存被释放。但 s 的引用被返回，因此会报错
 ```
 
+**引用取值采用解引用运算符(dereference operator)`*`来取值**
+```rs
+let y = &String::from("hello");
+assert_eq!("hello", *y);
+```
+
 ## Slice。切片
 slice允许引用集合中一段**连续的**元素序列，而不用引用整个集合。slice也**不会变更所有权**
 ```rs
