@@ -47,12 +47,17 @@ impl<T, U> Point<T, U> {
   }
 }
 
+use std::rc::Weak;
+
 /// 泛型的使用
 /// -  可以自动推导也可以手动指定，::<T>的形式即是指定
 fn _mix() {
   let _p1 = Point { x: 5, y: 10.4 };
   let _p2 = Point { x: "Hello", y: 2.3 };
   //可以想见，p1.mixup::<&str>(p2) 结果的类型是 <i32, &str>
+
+  let _weak: Weak<String> = Weak::<String>::new();
+  //指定泛型的struct需要Struct::<...>来指定
 }
 
 //Rust 通过在编译时进行 单态化(monomorphization) 来保证泛型的效率

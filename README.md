@@ -41,7 +41,7 @@ let sum = x + y;  //Error!
 | [模块化](./doc/modularize.md)<br>
 | [基础数据类型](./doc/base_type.md)<br>
 | [所有权Ownership](./doc/ownership.md)<br>
-| [结构体(Rust中的对象)](./doc/sturcture.md)<br>
+| [结构体(Rust中的对象)](./doc/structure.md)<br>
 | [枚举(Rust中对结构体的更高级封装?)](./doc/enums.md)<br>
 | [错误处理](./doc/error_handle.md)<br>
 | [自动化测试](./doc/auto_testing.md)<br>
