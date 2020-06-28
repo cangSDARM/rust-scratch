@@ -52,3 +52,4 @@ let sum = x + y;  //Error!
 | [匿名函数及闭包](./src/anonymous_function.rs)<br>
 | [迭代器](./src/iterator.rs)<br>
 | [智能指针](./src/smart_pointer.rs)<br>
+| [并发](./src/concurrent.rs)<br>
