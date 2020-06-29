@@ -52,7 +52,7 @@ fn message_passing() {
 /// 这里使用了一个共享内存的例子: 互斥器(mutual exclusion, mutex)和原子引用计数(atomically reference counted)
 use std::sync::{Arc, Mutex, MutexGuard};
 fn shared_state() {
-  //[Mutex提供了内部可变性](./smart_pointer.rs)
+  //[Mutex提供了内部可变性](smart_pointer.rs)
   let m = Mutex::new(5);
 
   {

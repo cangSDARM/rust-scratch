@@ -53,3 +53,4 @@ let sum = x + y;  //Error!
 | [迭代器](./src/iterator.rs)<br>
 | [智能指针](./src/smart_pointer.rs)<br>
 | [并发](./src/concurrent.rs)<br>
+| [在Rust中"面向对象"](./src/oo.rs)<br>

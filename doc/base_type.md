@@ -148,3 +148,27 @@ for (key, value) in &hmap {}
 
 **一旦键值对被插入后就为 HashMap 所拥有**<br>
 **如果将引用插入 HashMap，这些值本身将不会被移动进 HashMap。但是这些引用指向的值必须在 HashMap 有效时也是有效的**
+
+### dyn
+**Rust编译器需要知道每个函数的返回类型需要多少空间**, 这意味着所有函数都必须返回一个具体类型
+
+如果具有某一特性(trait), 则不能编写返回该特性的函数，因为其不同的实现将需要不同的内存量
+
+但有一个解决办法, 使用`Box`. 而Box需要明确内容的类型, 使用`dyn`关键字解决
+```rs
+// Returns some struct that implements Animal, but we don't know which one at compile time.
+fn random_animal(random_number: f64) -> Box<dyn Animal> {
+    if random_number < 0.5 {
+        Box::new(Sheep {})
+    } else {
+        Box::new(Cow {})
+    }
+}
+```
+
+不是所有的 trait 都能使用 dyn, 只有**对象安全**的才行:
+
+- 返回值类型不为`Self`
+- 方法没有任何泛型类型参数
+
+[更多细节 RFC255](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)
