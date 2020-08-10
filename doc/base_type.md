@@ -81,16 +81,16 @@ for i in &s.bytes() {}  //每字节一个 i，返回 u8 类型
 ```
 > Rust不允许：`s[1]`，因为utf8和查找效率问题
 
-### Vic\<T>
+### Vec\<T>
 ```rs
-let v:Vic<i32> = Vec::new();
+let v:Vec<i32> = Vec::new();
 
 let mut v = vec![1, 2, 3];  //使用宏创建
 ```
 > 若要保存不同类型的，请先定义包含所有需要保存类型的枚举<br>
 > 如果无法枚举需要保存的类型，请使用triat
 
-**Vic的增删改查**
+**Vec的增删改查**
 ```rs
 //增
 v.push(1);  //有mut的才行

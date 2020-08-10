@@ -45,6 +45,7 @@ let sum = x + y;  //Error!
 | [枚举(Rust中对结构体的更高级封装?)](./doc/enums.md)<br>
 | [错误处理](./doc/error_handle.md)<br>
 | [自动化测试](./doc/auto_testing.md)<br>
+| [模式匹配](./doc/patterns.md)<br>
 - src<br>
 | [基础语法](./src/main.rs)<br>
 | [流程控制](./src/process_control.rs)<br>

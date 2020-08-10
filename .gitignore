@@ -1,2 +1,6 @@
 target/
 Cargo.lock
+
+#ide
+.idea
+.vscode

@@ -1,5 +1,5 @@
 # Cargo
-[return](../README.md)
+[返回](../README.md)
 
 cargo是rust的包(crates)管理工具
 

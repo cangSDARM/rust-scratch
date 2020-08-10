@@ -37,3 +37,8 @@ fn main() {
 fn randint(max: i32) -> i32 {
     return rand::thread_rng().gen_range(1, max);
 }
+// 函数参数是一个"模式", 因而可以类似于 let 来解构
+fn print_coordinates(&(x, y): &(i32, i32)) {
+    //print_coordinates(&(1,2));
+    println!("Current location: ({}, {})", x, y);
+}
