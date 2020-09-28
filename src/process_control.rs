@@ -93,8 +93,8 @@ fn matching(num: i32) {
   let (x, y) = (false, true);
   match Some(4){
     Some(n) if n < 5 => println!("less than 5"),
-    Some(n) if x => println!("greater than 5, and y is true"),
-    10 | 11 | 12 if y => { println!("equals 10 or 11 or 12, and y is true") },
+    Some(_) if x => println!("greater than 5, and x is true"),
+    Some(10) | Some(11) | Some(12) if y => { println!("equals 10 or 11 or 12, and y is true") },
     _ => (),
   }
 
@@ -103,10 +103,14 @@ fn matching(num: i32) {
   enum Massage { Hello { id: i32 }, }
   let msg = Massage::Hello {id: 5};
   match msg {
-    Message::Hello { id: id_variable @ 3..=7 } => {
+    Massage::Hello { id: id_variable @ 3..=7 } => {
       //绑定到 id_variable 并且测试其是否在 [3, 7] 之间
       println!("Found an id in range: {}", id_variable)
     },
+    Massage::Hello { id: 9..=12 } => {
+      //只测试 id 是否在一个范围内
+      println!("Found an id in range [9, 12]")
+    }
     _ => (),
   }
 
