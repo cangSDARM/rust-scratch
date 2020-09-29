@@ -1,5 +1,5 @@
 # 数据类型
-[return](../README.md)
+[返回](../README.md)
 
 ## 栈上的数据
 ### 标量(Scalar)类型

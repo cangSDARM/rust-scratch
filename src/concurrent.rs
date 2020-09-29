@@ -99,4 +99,6 @@ fn shared_state1() {
 // - Sync的引用可以发送给其他线程
 
 // 手动实现`Send`和`Sync`是不安全的, 除非你清楚的了解相关概念.
-// 相关参考: [The Rustonomicon](https://doc.rust-lang.org/stable/nomicon/#the-rustonomicon)
+// 相关参考: 
+// [The Rustonomicon](https://doc.rust-lang.org/stable/nomicon/#the-rustonomicon)
+// [Unsafe Rust](../doc/unsafe.md)
