@@ -62,6 +62,30 @@ fn _mix() {
 
 //Rust 通过在编译时进行 单态化(monomorphization) 来保证泛型的效率
 
+/// 默认泛型参数(default type parameters)
+///   如下面例子所示, 如果实现 Add 时不指定 RHS 的具体类型，RHS 的类型将是默认的 Self 类型，也就是在其上实现 Add 的类型
+trait Add<RHS = Self> {
+  type Output;
+
+  fn add(self, rhs: RHS) -> Self::Output;
+}
+struct Millimeters(u32);
+struct Meters(u32);
+//默认参数的
+impl Add for Millimeters {
+  type Output = Millimeters;
+  fn add(self, rhs: Millimeters) -> Millimeters {
+    Millimeters(self.0 + rhs.0)
+  }
+}
+//非默认的
+impl Add<Meters> for Millimeters {
+  type Output = Millimeters;
+  fn add(self, other: Meters) -> Millimeters {
+    Millimeters(self.0 + (other.0 * 1000))
+  }
+}
+
 //更多
-//[有关泛型高级用法（涉及tarit的）](traits.rs)
-//[涉及生命周期的](lifecricle.rs)
+//  [有关泛型高级用法(涉及tarit的)](traits.rs)
+//  [涉及生命周期的](lifecricle.rs)

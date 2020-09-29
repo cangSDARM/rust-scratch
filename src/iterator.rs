@@ -67,4 +67,4 @@ impl Iterator for Shoe {
   }
 }
 
-// 迭代器是 Rust 的 零成本抽象（zero-cost abstractions）之一，它意味着抽象并不会引入运行时开销，完全可以放心大胆的使用
+// 迭代器是 Rust 的 零成本抽象(zero-cost abstractions)之一, 它意味着抽象并不会引入运行时开销, 完全可以放心大胆的使用
