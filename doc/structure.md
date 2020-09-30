@@ -2,7 +2,7 @@
 [返回](../README.md)
 
 Rust中，是基于结构体构建对象的
-```rs
+```rust
 struct User {
   username: String,
   email: String,
@@ -22,7 +22,7 @@ let email = user1.email;
 > 若是可变的，则整个实例必须是可变的; Rust 不允许只将某个字段标记为可变
 
 **变量与字段同名时的字段初始化**
-```rs
+```rust
 fn build_user(email: String, username: String) -> User {
   User {
     email,
@@ -34,7 +34,7 @@ fn build_user(email: String, username: String) -> User {
 ```
 
 **结构体更新语法可以从其他实例创建实例**
-```rs
+```rust
 let user2 = User {
   email: String::from("another@example.com"),
   username: String::from("anotherusername567"),
@@ -45,7 +45,7 @@ let user2 = User {
 > 注意这会破坏user1的所有权。参看后面的“结构体所有权”来修复
 
 **对象解构(Rust中称结构体更新)**
-```rs
+```rust
 let user2 = User {
   email: String::from("another@example.com"),
   username: String::from("anotherusername567"),
@@ -56,7 +56,7 @@ let user2 = User {
 > 这也会破坏所有权(因为这只是上一种写法的语法糖)，参看后面的“结构体所有权”来修复
 
 **没有命名字段的元组结构体**
-```rs
+```rust
 struct S(String);
 struct Color(i32, i32, i32);
 struct Paint(i32, i32, i32);  //定义的每一个结构体有其自己的类型，即使结构体中的字段有着相同的类型
@@ -70,7 +70,7 @@ struct Union;
 > 类单元结构体(unit-like structs)的名字，是因为其类似于`()`即**Unit**类型
 
 **结构体的打印并不和基本类型相似**
-```rs
+```rust
 #[device(Debug)]  //需要这个才能打印。这个称为trait注解。参看`../src/traits.rs`
 struct User{}
 
@@ -86,7 +86,7 @@ struct User{}
 可以使结构体存储被其他对象拥有的数据的引用，这么做的话需要用上生命周期(lifetimes)。(参看[生命周期](../src/lifecricle.rs))
 
 ## 方法
-```rs
+```rust
 struct User();
 
 impl User {
@@ -111,7 +111,7 @@ impl User{
 > 同样，如果单独是`self`会修改所有权，`&self`是引用，`&mut self`是可变引用
 
 **当使用 object.something() 调用方法时，Rust 会自动为 object 添加 &、&mut 或 * 以便使 object 与方法签名匹配，称为自动引用和解引用**
-```rs
+```rust
 user1.login();
 (&user1).login();
 ```

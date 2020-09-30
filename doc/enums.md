@@ -1,7 +1,7 @@
 # 枚举
 [返回](../README.md)
 
-```rs
+```rust
 enum Ip{
   V4,
   V6,
@@ -12,7 +12,7 @@ let v6 = Ip::V6;
 ```
 
 **枚举成员可以指定类型**
-```rs
+```rust
 enum Ip{
   V4(u8, u8, u8, u8), //元组
   V6(String), //字符串
@@ -26,7 +26,7 @@ let router = Ip::V6(String::from("::1"));
 > 可以将**任意类型**的数据放入枚举成员中:例如字符串、数字类型或者结构体。也可以包含另一个枚举
 
 **枚举也能定义方法**
-```rs
+```rust
 impl Message {
   fn call(&self) {
     // 在这里定义方法体
@@ -39,7 +39,7 @@ m.call();
 ### match中的枚举
 更详细的`match`信息，请查看：[process_control](../src/process_control.rs)
 
-```rs
+```rust
 enum Coin{
   Penny,
   Quarter(Ip),

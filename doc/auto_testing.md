@@ -4,7 +4,7 @@
 Rust 中的测试就是带有`test`**属性**注解的函数
 
 属性(attribute)是关于Rust代码片段的元数据
-```rs
+```rust
 // cargo new --lib 生成的测试模块样例
 fn main() {}
 #[cfg(test)]
@@ -22,7 +22,7 @@ mod tests {
 ```
 
 **除了检查代码是否返回期望的值之外，检查代码是否正确处理错误也是很重要的**
-```rs
+```rust
 #[test]
 #[should_panic(expected = "Info")]
 fn guess(){
@@ -32,7 +32,7 @@ fn guess(){
 > 注意，`should_painc`中的expected必须是**发生panic的信息的子串**。这样做是为了保证发生的painc是预期的
 
 **也可以使用Result枚举来控制测试是否正常**
-```rs
+```rust
 #[test]
 fn rusults() -> Result<(), String>{
   if 2+2 == 4{
@@ -68,7 +68,7 @@ fn rusults() -> Result<(), String>{
 
 **如果你负责特定位置的代码，你可能会希望只运行与这些代码相关的测试**
 
-```rs
+```rust
 #![allow(unused_variables)]
 fn main() {
   pub fn add_two(a: i32) -> i32 {
@@ -101,8 +101,7 @@ fn main() {
 
 **也可以简单点，忽略那些你不想测试的**
 
-```rs
-
+```rust
 #![allow(unused_variables)]
 fn main() {
   #[test]

@@ -22,7 +22,7 @@ if let 和 while let 表达式只能接受可反驳的模式. 因为根据定义
 
 ### 语法
 #### 匹配字面值
-```rs
+```rust
 let x = 1;
 match x {
   1 => println!("one"),
@@ -31,7 +31,7 @@ match x {
 ```
 
 #### 匹配命名变量
-```rs
+```rust
 let mut s = String::new();
 match io::stdin().read_line(&mut s) {
   Ok(n) => println!("read {} bytes", n),
@@ -40,7 +40,7 @@ match io::stdin().read_line(&mut s) {
 ```
 
 #### 多个模式
-```rs
+```rust
 let x = 1;
 match x {
   1 | 2 => println!("one or two"),  //1 or 2
@@ -51,7 +51,7 @@ match x {
 
 #### 范围匹配
 只能用于 数字/char 类型
-```rs
+```rust
 let x = 5;
 match x {
   1..=5 => println!("one through five"),    //[1, 5]
@@ -62,7 +62,7 @@ match x {
 
 #### 解构
 ###### 结构体
-```rs
+```rust
 struct Point {
   x: i32,
   y: i32,
@@ -78,7 +78,7 @@ match p {
 ```
 
 ###### 枚举
-```rs
+```rust
 enum Message {
   Quit,
   Move { x: i32, y: i32 },
@@ -101,7 +101,7 @@ match msg {
 ```
 
 ###### 嵌套的解构
-```rs
+```rust
 // 嵌套的枚举和结构体
 match msg {
   Message::ChangeColor(Color::Rgb(r, g, b)) => {
@@ -119,7 +119,7 @@ let ((feet, inches), Point {x, y}) = ((3, 10), Point { x: 3, y: -10 });
 
 #### 忽略值
 ###### 忽略
-```rs
+```rust
 let (x, _) = (1, 2);
 let _x = 1;
 
@@ -130,6 +130,6 @@ fn foo(_: i32, y: i32) {
 ```
 
 ###### 省略
-```rs
+```rust
 let (x, .., y) = (1, 2, 3, 4, 5, 6);
 ```

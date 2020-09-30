@@ -12,7 +12,7 @@ Rust 将错误组合成两个主要类别：
 panic = 'abort'
 ```
 
-```rs
+```rust
 panic!("Info");
 ```
 
@@ -20,7 +20,7 @@ panic!("Info");
 Result(enum)定义了两个成员
 - Ok(T)
 - Err(E)
-```rs
+```rust
 use std::fs::File;
 use std::io::ErrorKind;
 
@@ -50,7 +50,7 @@ let f = File::open("hello.txt").map_err(|error| {
 > 任意类型的错误：`Box<dyn Error>`
 
 **Result中的简便封装**
-```rs
+```rust
 //Ok 返回值；Err painc
 f = File::open("hello.txt").unwrap();
 
@@ -59,7 +59,7 @@ File::open("hello.txt").expect("Failed to open");
 ```
 
 **错误也可以上抛**
-```rs
+```rust
 use std::fs;
 use std::fs::Read;
 use std::io;

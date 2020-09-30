@@ -22,7 +22,7 @@
 - 不能实现任何自动清理功能
 
 > 注意: 可以在安全代码中**创建**裸指针，只是不能在unsafe块之外**解引用**裸指针
-```rs
+```rust
 //通过引用创建裸指针
 let mut num = 5;
 let r1 = &num as *const i32;    //不可变
@@ -34,7 +34,7 @@ let r = address as *const i32;
 ```
 
 > 解引用
-```rs
+```rust
 unsafe {
     //only support in unsafe
     println!("r1 is: {}", *r1);
@@ -47,7 +47,7 @@ unsafe {
 ### 调用不安全的函数或方法
 在此上下文中, 关键字`unsafe`表示该函数具有调用时需要满足的要求, 而 Rust 不会保证满足这些要求
 
-```rs
+```rust
 unsafe fn dangerous() {}
 
 unsafe {
@@ -57,7 +57,7 @@ unsafe {
 
 #### 创建不安全代码的安全抽象
 通常实践中, 将不安全代码封装进安全函数是一个常见的抽象, 而不是暴露一个unsafe的函数
-```rs
+```rust
 //例, vec的split_at_mut函数
 use std::slice;
 fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {
@@ -82,7 +82,7 @@ fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {
 extern 块中声明的函数在 Rust 代码中总是不安全的
 
 > 如调用 "C" 中的函数
-```rs
+```rust
 extern "C" {
     fn abs(input: i32) -> i32;
 }
@@ -96,7 +96,7 @@ fn main() {
 > 其中 "C" 是指外部函数所使用的应用二进制接口(application binary interface，ABI). 即如何在汇编语言层面调用此函数. "C"是最常见的, 指代C语言的 ABI
 
 #### 使用 extern 函数, 外部语言调用Rust
-```rs
+```rust
 #[no_mangle]    //意指禁止编译器优化函数名
 pub extern "C" fn call_from_c() {
     //这里的 "C" 语义和上面相同
@@ -109,7 +109,7 @@ pub extern "C" fn call_from_c() {
 
 不安全意味着可能导致数据竞争, 应尽量避免. 或通过[并发](../src/concurrent.rs)或[线程安全的智能指针](../src/smart_pointer.rs)替代
 
-```rs
+```rust
 static mut COUNTER: u32 = 0;
 
 fn add_to_count(inc: u32) {
@@ -131,7 +131,7 @@ fn main() {
 当至少有一个方法中包含编译器不能验证的不变量时 trait 是不安全的
 
 > 在 trait 之前增加 unsafe 关键字将 trait 声明为 unsafe, 同时该 trait 的实现也必须标记为 unsafe
-```rs
+```rust
 unsafe trait Foo {
     // methods go here
 }

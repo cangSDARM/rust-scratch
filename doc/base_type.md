@@ -50,7 +50,7 @@
 ### String
 String和&str都是以`utf-8`格式所保存(因此涉及到多字节的问题)<br>
 这种问题得自己处理
-```rs
+```rust
 //字面量
 let s = "hello";  //将硬编码到程序中
 // s类型是&str(严格说是 &'static str )
@@ -64,7 +64,7 @@ let mut s = String::with_capacity(10);  //申请容量为10字节的内存
 > Rust中，String是对`Vec<u8>`对一个封装
 
 **String的增删改查**
-```rs
+```rust
 s.push('s');    //push(char)
 s.push_str("ss");   //push(&str)
 
@@ -82,7 +82,7 @@ for i in &s.bytes() {}  //每字节一个 i，返回 u8 类型
 > Rust不允许：`s[1]`，因为utf8和查找效率问题
 
 ### Vec\<T>
-```rs
+```rust
 let v:Vec<i32> = Vec::new();
 
 let mut v = vec![1, 2, 3];  //使用宏创建
@@ -91,7 +91,7 @@ let mut v = vec![1, 2, 3];  //使用宏创建
 > 如果无法枚举需要保存的类型，请使用triat
 
 **Vec的增删改查**
-```rs
+```rust
 //增
 v.push(1);  //有mut的才行
 
@@ -118,7 +118,7 @@ let i = match v.get(2) {
 ```
 > 注意，**有增(&, 非&mut)则不能有查，有查则不能有增**
 ### HashMap
-```rs
+```rust
 use std::collections::HashMap;
 
 let mut hmap = HashMap::new();
@@ -131,7 +131,7 @@ let hmap: HashMap<_, _> = vec!["k1", "k2"].iter().zip(value).collect();
 > _ 表示留给 Rust 自动推导
 
 **HashMap的增删改查**
-```rs
+```rust
 //覆盖
 hmap.insert(String::from("AA"), 12);
 //没有时更新

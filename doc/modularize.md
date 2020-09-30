@@ -3,7 +3,7 @@
 
 每个crate的根模块都被隐式创建，叫做`crate`模块
 
-```rs
+```rust
 mod Mod{
   fn some() {}
 }
@@ -13,7 +13,7 @@ fn main(){}
 > `Mod`模块包括some函数
 
 **模块可以随便嵌套**
-```rs
+```rust
 mod sound {
   mod instrument {
     mod woodwind {
@@ -25,7 +25,7 @@ mod sound {
 ```
 
 **调用模块有两种方式，绝对路径和相对路径**
-```rs
+```rust
 // 绝对路径
 crate::sound::instrument::clarinet(); //以crate开头
 
@@ -43,7 +43,7 @@ use std::collections::HashMap;
 - 可以使用 pub 关键字使项变为公有
 - 不允许使用模块的子模块中的私有代码
 - 允许使用任何父模块或当前模块中的代码
-```rs
+```rust
 mod sound {
   pub mod instrument {
     pub fn clarinet() {} 
@@ -57,7 +57,7 @@ mod sound {
 **而枚举，只需要`pub enum`即可**<br>
 
 **通过`use`关键字可以缩短调用长度**
-```rs
+```rust
 //非use
 sound::instrument::clarinet();
 
@@ -74,7 +74,7 @@ use crate_name::sound::instrument as Ins;  // as 用法同其他语言
 > use后，依旧可以按照旧方式调用
 
 **使用`pub use`使得 use 后，可以重导出**
-```rs
+```rust
 mod group{
   pub use crate::sound::instrument;
 }
@@ -83,7 +83,7 @@ group::instrument::clarinet();
 ```
 
 **可以通过嵌套和glob，将多个带有相同前缀的项引入作用域**
-```rs
+```rust
 use std::{cmp::Ordering, io}; //引入 std::cmp::Ordering; std::io;
 
 use std::io::{self, Write}; //引入 std::io; std::io::Write;
@@ -93,7 +93,7 @@ use std::cmp::*;
 ```
 
 **多个文件内的Mod**
-```rs
+```rust
 // src/sound/instrument.rs
 pub fn clarinet() {}
 

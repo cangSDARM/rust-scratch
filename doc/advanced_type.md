@@ -60,7 +60,7 @@ let s: str = "str?";
 `dyn`关键字用于附加一些元信息来扩展指针(如长度等), 来将动态大小约束为固定大小
 
 通常有: `&dyn Trait`, `Box<dyn Trait>` 或 `Rc<dyn Trait>`:
-```rs
+```rust
 // Returns some struct that implements Animal, but we don't know which one at compile time.
 fn random_animal(random_number: f64) -> Box<dyn Animal> {
     if random_number < 0.5 {
