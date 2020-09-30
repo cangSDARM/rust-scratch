@@ -1,8 +1,5 @@
 # Rust
 ## Quick Look
-print!  是宏
-print   是函数
-
 标志符以：<br>
 1. 字母开头，后面跟字母、数字、_、None
 2. _开头，但后面有字母、数字或\_
@@ -40,6 +37,7 @@ let sum = x + y;  //Error!
 | [Cargo](./doc/cargo.md)<br>
 | [模块化](./doc/modularize.md)<br>
 | [基础数据类型](./doc/base_type.md)<br>
+| [高级数据类型](./doc/advanced_type.md)<br>
 | [所有权Ownership](./doc/ownership.md)<br>
 | [结构体(Rust中的对象)](./doc/structure.md)<br>
 | [枚举(Rust中对结构体的更高级封装?)](./doc/enums.md)<br>
