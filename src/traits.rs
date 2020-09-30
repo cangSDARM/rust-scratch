@@ -49,6 +49,8 @@ impl Summary for Tweet {
 /// 其使用一个 [元组结构体](../doc/structure.md) 来包裹外部 trait 来实现
 /// 
 /// 但要注意, newtype(Wrapper)没有任何被封装类型(Vec<String>)的方法, 必须自己手动实现. 或者使用 [Deref](./smart_pointer.rs) 封装函数来返回内部的类型. 同时, 要实现部分被封装类型的方法的话, 只能是**手动自己实现**
+/// 
+/// Newtype 也可以用来隐藏其内部的泛型类型. 如下面的 Wrapper 就隐藏了 Vec<String>
 struct Wrapper(Vec<String>);
 impl Display for Wrapper {
   fn fmt(&self, f: &mut Formatter) -> Result {

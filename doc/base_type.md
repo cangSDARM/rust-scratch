@@ -149,12 +149,66 @@ for (key, value) in &hmap {}
 **一旦键值对被插入后就为 HashMap 所拥有**<br>
 **如果将引用插入 HashMap，这些值本身将不会被移动进 HashMap。但是这些引用指向的值必须在 HashMap 有效时也是有效的**
 
-### dyn
+## 特殊类型
+### Newtype
+[Newtype模式](../src/traits.rs)
+
+### 类型别名
+类型别名(type alias)意味着别名和真实类型是同义词(synonym), 这两个类型是完全可以替代使用的
+
+类型别名的主要用途是减少重复
+```rust
+type Thunk = Box<dyn Fn() + Send + 'static>;
+let f: Thunk = Box::new(|| println!("hi"));
+fn toke() -> Thunk {}
+fn gave(f: Thunk) {}
+```
+
+类型别名系统类似于Typescript中的, 也可以用泛型
+```rust
+type Result<T> = std::result::Result<T, std::io::Error>;
+```
+
+### Nevertype
+rust中也存在一个 never 的类型(称为empty type), 即`!`
+
+Nevertype 表示一个函数**从不返回值**(和[void](../src/main.rs)区别, void返回void, void确实是个类型), 这种从不返回值的函数叫做发散函数(diverging functions)
+```rust
+fn bar() -> ! {}
+```
+
+Nevertype 可以**强转为任意类型**
+```rust
+painc!("painc");    //painc 发生了强转
+loop {
+  print!("and ever ");    //print 发生了强转, 因而会产生死循环
+}
+```
+
+Nevertype 常常用来绕过类型系统检查, 如`match`分支中
+```rust
+// match 分支要求返回类型相同. 这里`continue`返回了个Nevertype
+let guess = match guess.trim().parse() {
+  Ok(_) => 5,
+  Err(_) => continue,
+}
+```
+
+### 动态大小的类型
 **Rust编译器需要知道每个函数的返回类型需要多少空间**, 这意味着所有函数都必须返回一个具体类型
 
-如果具有某一特性(trait), 则不能编写返回该特性的函数，因为其不同的实现将需要不同的内存量
+但如同`str`, 直到运行时都不知道大小的类型, Rust 也有部分动态大小类型(dynamically sized types, DST)
+```rust
+let s: str = "str?";
+```
+> 但DST的变量**是无法直接声明的**, 上面的 s 的类型应该是`&str`. `&str`的长度是固定的(usize的两倍), 存储了字符串长度及头地址
 
-但有一个解决办法, 使用`Box`. 而Box需要明确内容的类型, 使用`dyn`关键字解决
+所以, 动态大小类型的总是满足: 必须将动态大小类型的值置于某种指针之后. 而Rust的解决办法通常是用一些额外的元信息来储存动态信息的大小
+
+#### dyn
+`dyn`关键字用于附加一些元信息来扩展指针(如长度等), 来将动态大小约束为固定大小
+
+通常有: `&dyn Trait`, `Box<dyn Trait>` 或 `Rc<dyn Trait>`:
 ```rs
 // Returns some struct that implements Animal, but we don't know which one at compile time.
 fn random_animal(random_number: f64) -> Box<dyn Animal> {
@@ -170,5 +224,21 @@ fn random_animal(random_number: f64) -> Box<dyn Animal> {
 
 - 返回值类型不为`Self`
 - 方法没有任何泛型类型参数
+
+#### Sized
+对于自己声明的Trait, Rust使用`Sized` trait来限制Trait.
+
+这个 trait 使得编译器在编译时就知道类型实现时的大小. 而且对于泛型来讲, 它是隐式实现的
+```rust
+fn generic<T>(t: T) { }
+//In compiler time:
+fn generic<T: Sized>(t: T) {}
+```
+
+这个限制可以使用`?Trait`来放宽
+```rust
+fn generic_dst<T: ?Sized>(t: &T) {}
+```
+> 放宽后的参数需要约束, 这里选择了T的引用
 
 [更多细节 RFC255](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)
