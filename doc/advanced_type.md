@@ -63,11 +63,11 @@ let s: str = "str?";
 ```rust
 // Returns some struct that implements Animal, but we don't know which one at compile time.
 fn random_animal(random_number: f64) -> Box<dyn Animal> {
-    if random_number < 0.5 {
-        Box::new(Sheep {})
-    } else {
-        Box::new(Cow {})
-    }
+  if random_number < 0.5 {
+    Box::new(Sheep {})
+  } else {
+    Box::new(Cow {})
+  }
 }
 ```
 

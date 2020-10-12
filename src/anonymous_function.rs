@@ -31,8 +31,8 @@ struct Cacher<T> where T: Fn(u32) -> u32 {
 impl<T> Cacher<T> where T: Fn(u32) -> u32 {
   fn new(calculation: T) -> Cacher<T> {
     Cacher {
-        calculation,
-        value: None,
+      calculation,
+      value: None,
     }
   }
   fn value(&mut self, arg: u32) -> u32 {
@@ -52,5 +52,34 @@ impl<T> Cacher<T> where T: Fn(u32) -> u32 {
 /// 没有移动闭包所有权到函数体内的匿名函数实现了 FnMut
 /// 不需要对闭包进行可变访问的匿名函数则实现了 Fn
 /// 
-/// 如果你希望强制匿名函数获取其闭包的所有权，可以在其前面加上 `move` 关键字
+/// 如果你希望强制匿名函数获取其闭包的所有权，可以在其前面加上`move`关键字
 let d = move || x;
+
+/// 返回闭包
+/// 
+/// 不能直接返回一个闭包的类型(Fn(i32)->i32), 而必须包裹在一个容器里, 如Box
+fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
+  Box::new(|x| x + 1)
+}
+
+/// 函数指针
+/// 
+/// 通过函数指针允许我们使用函数作为另一个函数的参数
+/// 其类型为`fn`(闭包的`Fn`是trait, 不是类型), fn 被称为函数指针(function pointer)
+fn add_one(x: i32) -> i32 {
+  x + 1
+}
+fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
+  f(arg) + f(arg)
+}
+fn do_twice_anonymous(f: &dyn Fn(i32) -> i32, arg: i32) -> i32 {
+  f(arg) + f(arg)
+}
+do_twice(add_one, 3);
+do_twice_anonymous(&|x|{ x }, 3);
+
+/// 返回函数指针
+fn returns_closure() -> fn(i32) -> i32 {
+  fn c(x: i32) -> i32 { x + 1 };
+  c
+}
