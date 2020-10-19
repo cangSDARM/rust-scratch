@@ -45,6 +45,7 @@ let sum = x + y;  //Error!
 | [自动化测试](./doc/auto_testing.md)<br>
 | [模式匹配](./doc/patterns.md)<br>
 | [unsafe及extern块](./doc/unsafe.md)<br>
+| [宏。宏小册, 2017ver](https://www.bookstack.cn/read/DaseinPhaos-tlborm-chinese/README.md)<br>
 - src<br>
 | [基础语法](./src/main.rs)<br>
 | [流程控制](./src/process_control.rs)<br>
@@ -54,3 +55,12 @@ let sum = x + y;  //Error!
 | [智能指针](./src/smart_pointer.rs)<br>
 | [并发](./src/concurrent.rs)<br>
 | [在Rust中"面向对象"](./src/oo.rs)<br>
+
+## 更多参考
+| [The Rustonomicon](https://github.com/rust-lang/nomicon)<br>
+| [async book](https://github.com/rust-lang/async-book)<br>
+| [Rust Cookbook](https://github.com/rust-lang-nursery/rust-cookbook)<br>
+| [The Rust and WebAssembly Book](https://github.com/rustwasm/book)<br>
+| [Learn Rust by writing Entirely Too Many Linked Lists](https://github.com/rust-unofficial/too-many-lists)<br>
+| [The Cargo Book](https://github.com/rust-lang/cargo/tree/master/src/doc/src)<br>
+| [Rust Compiler Error Index](https://doc.rust-lang.org/error-index.html)<br>
