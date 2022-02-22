@@ -69,11 +69,19 @@ let sum = x + y;  //Error!
 
 ## 更多参考
 
-| [The Rustonomicon](https://github.com/rust-lang/nomicon)<br>
-| [async book](https://github.com/rust-lang/async-book)<br>
-| [Rust Cookbook](https://github.com/rust-lang-nursery/rust-cookbook)<br>
-| [The Rust and WebAssembly Book](https://github.com/rustwasm/book)<br>
-| [Learn Rust by writing Entirely Too Many Linked Lists](https://github.com/rust-unofficial/too-many-lists)<br>
-| [The Cargo Book](https://github.com/rust-lang/cargo/tree/master/src/doc/src)<br>
-| [Rust Compiler Error Index](https://doc.rust-lang.org/error-index.html)<br>
-| [Some helpful hints](https://chercher.tech/rust/errors-in-rust)
+- [The Rustonomicon](https://github.com/rust-lang/nomicon)<br>
+- [async book](https://github.com/rust-lang/async-book)<br>
+- [Rust Cookbook](https://github.com/rust-lang-nursery/rust-cookbook)<br>
+- [The Rust and WebAssembly Book](https://github.com/rustwasm/book)<br>
+- [Learn Rust by writing Entirely Too Many Linked Lists](https://github.com/rust-unofficial/too-many-lists)<br>
+- [The Cargo Book](https://github.com/rust-lang/cargo/tree/master/src/doc/src)<br>
+- [Rust Compiler Error Index](https://doc.rust-lang.org/error-index.html)<br>
+- [Some helpful hints](https://chercher.tech/rust/errors-in-rust)<br>
+- [Gof Design Patterns](https://github.com/lpxxn/rust-design-pattern)<br>
+- [Godot Rust Example](https://github.com/fringelin/godot_rust_example)<br>
+- MS Rust<br>
+  | [Intro](https://docs.microsoft.com/en-us/windows/dev-environment/rust/rust-for-windows)<br>
+  | [Doc](https://microsoft.github.io/windows-docs-rs/doc)<br>
+  | [Example](https://github.com/kekeimiku/msrs)<br>
+- [Rust Magazine](https://rustmagazine.github.io/rust_magazine_2021/index.html)<br>
+- [Rust in embedded](https://docs.rust-embedded.org/)
