@@ -1,9 +1,11 @@
 # 自动化测试
+
 [返回](../README.md)
 
 Rust 中的测试就是带有`test`**属性**注解的函数
 
-属性(attribute)是关于Rust代码片段的元数据
+属性(attribute)是关于 Rust 代码片段的元数据
+
 ```rust
 // cargo new --lib 生成的测试模块样例
 fn main() {}
@@ -22,6 +24,7 @@ mod tests {
 ```
 
 **除了检查代码是否返回期望的值之外，检查代码是否正确处理错误也是很重要的**
+
 ```rust
 #[test]
 #[should_panic(expected = "Info")]
@@ -29,9 +32,11 @@ fn guess(){
   Guess::new(200);  //should painc in Guess::new
 }
 ```
-> 注意，`should_painc`中的expected必须是**发生panic的信息的子串**。这样做是为了保证发生的painc是预期的
 
-**也可以使用Result枚举来控制测试是否正常**
+> 注意，`should_painc`中的 expected 必须是**发生 panic 的信息的子串**。这样做是为了保证发生的 painc 是预期的
+
+**也可以使用 Result 枚举来控制测试是否正常**
+
 ```rust
 #[test]
 fn rusults() -> Result<(), String>{
@@ -42,10 +47,12 @@ fn rusults() -> Result<(), String>{
   }
 }
 ```
+
 > 注意，`should_painc`和`Result`不能混用
 
 ## 测试控制流程及分类
-使用`cargo test`运行测试(带test宏的)，其包括
+
+使用`cargo test`运行测试(带 test 宏的)，其包括
 
 1. 普通测试，由`running X test`显示
 2. 被忽略的，由`X ignored`显示
@@ -54,6 +61,7 @@ fn rusults() -> Result<(), String>{
 5. 文档测试，由`Doc-tests`显示
 
 ### 控制测试流程
+
 `cargo test`在测试模式下亦会编译代码并运行生成的测试二进制文件
 
 可以将一部分命令行参数传递给`cargo test`，而将另外一部分传递给生成的测试二进制文件。为了分隔这两种参数，需要先列出传递给`cargo test`的参数，接着是`分隔符 --`，再之后是传递给测试二进制文件的参数。运行`cargo test --help`会提示`cargo test`的有关参数，而运行`cargo test -- --help`可以提示在`分隔符 --`之后使用的有关参数
@@ -112,12 +120,14 @@ fn main() {
 }
 ```
 
-当然其实你也可以反过来，只运行被ignore的测试。可以使用`cargo test -- --ignored`
+当然其实你也可以反过来，只运行被 ignore 的测试。可以使用`cargo test -- --ignored`
 
 ## 测试的分类
+
 Rust 社区倾向于根据测试的两个主要分类来考虑问题：**单元测试（unit tests）**与**集成测试（integration tests）**。单元测试倾向于更小而更集中，在隔离的环境中一次测试一个模块，或者是测试私有接口。而集成测试对于你的库来说则完全是外部的。它们与其他外部代码一样，通过相同的方式使用你的代码，只测试公有接口而且每个测试都有可能会测试多个模块。
 
 ### 单元测试
+
 单元测试与他们要测试的代码共同存放在位于 src 目录下相同的文件中。规范是在每个文件中创建包含测试函数的`tests`模块，并使用`cfg(test)`标注模块
 
 > 测试模块的`#[cfg(test)]`注解(configuration，它告诉 Rust 其之后的项只应该被包含进特定配置选项中)告诉 Rust 只在执行`cargo test`时才编译和运行测试代码，而在运行`cargo build`时不这么做
@@ -125,6 +135,7 @@ Rust 社区倾向于根据测试的两个主要分类来考虑问题：**单元�
 且注意，Rust 是可以运行私有函数或属性的。
 
 ### 集成测试
+
 为了编写集成测试，需要在项目根目录创建一个 tests 目录，与 src 同级。Cargo 知道如何去寻找这个目录中的集成测试文件。接着可以随意在这个目录中创建任意多的测试文件，Cargo 会将每一个文件当作单独的 crate 来编译
 
 > 与单元测试不同，我们需要在文件顶部添加`use XXX`。这是因为每一个 tests 目录中的**测试文件都是完全独立的 crate**，所以需要在每一个文件中导入库

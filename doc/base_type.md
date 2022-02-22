@@ -1,55 +1,69 @@
 # 数据类型
+
 [返回](../README.md)
 
 ## 栈上的数据
-### 标量(Scalar)类型
-代表一个单独的值，Rust有四种基本标量类型<br>
-1. **整型**
-    |长度|有符号|无符号|
-    |:-:|:-:|:-:|
-    |8-bit|i8|u8|
-    |16-bit|i16|u16|
-    |32-bit|i32|u32|
-    |64-bit|i64|u64|
-    |arch|isize|usize|
-    - 默认为i32
-    - 其中，arch代表机器字节数。在64位机上代表64，32位上代表32
-    - 在release中，Rust的溢出将循环。如u8类型导致256变成0，257变成1
 
-    |字面值|例子|
-    |:-:|:-:|
-    |Decimal|98_000|
-    |Hex|0xff|
-    |Octal|0o77|
-    |Binary|0b1111_0000|
-    |Byte(u8 only)|b'A'|
-    - 默认是十进制数(Decimal)
-    - _代表可读性。没有其他含义
+### 标量(Scalar)类型
+
+代表一个单独的值，Rust 有四种基本标量类型<br>
+
+1. **整型**
+   |长度|有符号|无符号|
+   |:-:|:-:|:-:|
+   |8-bit|i8|u8|
+   |16-bit|i16|u16|
+   |32-bit|i32|u32|
+   |64-bit|i64|u64|
+   |arch|isize|usize|
+
+   - 默认为 i32
+   - 其中，arch 代表机器字节数。在 64 位机上代表 64，32 位上代表 32
+   - 在 release 中，Rust 的溢出将循环。如 u8 类型导致 256 变成 0，257 变成 1
+
+   |    字面值     |    例子     |
+   | :-----------: | :---------: |
+   |    Decimal    |   98_000    |
+   |      Hex      |    0xff     |
+   |     Octal     |    0o77     |
+   |    Binary     | 0b1111_0000 |
+   | Byte(u8 only) |    b'A'     |
+
+   - 默认是十进制数(Decimal)
+   - \_代表可读性。没有其他含义
+
 2. **浮点**
-    - 有两类，`f32`和`f64`
-    - 默认为f64
-3. **布尔bool**
-    - `true` / `false`
-4. **字符char**
-    - 默认为unicode标量类型。可以赋值为任意unicode字符
-    - 使用`'`(单引号)包裹
+   - 有两类，`f32`和`f64`
+   - 默认为 f64
+3. **布尔 bool**
+   - `true` / `false`
+4. **字符 char**
+   - 默认为 unicode 标量类型。可以赋值为任意 unicode 字符
+   - 使用`'`(单引号)包裹
+
 ### 复合(Compound)类型
-用于将多个值组合为一个类型，Rust有两种基本复合类型<br>
-1. **元祖tuple**
-    - 例子：`let tup: (i32, f64, u8) = (40, 8.3, 1);`
-    - 模式匹配来结构：`let (x, y, z) = tup;`
-    - 索引：`let x = tup.0; let y = tup.1; let z = tup.3`
-2. **数组array**
-    - 例子：`let arr :[i32; 3] = [1, 2, 3];`
-    - 数组长度是固定的(可变的是vector)
-    - 所有内容的类型都是一致的
-    - 数组Rust存在栈(stack)上
+
+用于将多个值组合为一个类型，Rust 有两种基本复合类型<br>
+
+1. **元祖 tuple**
+   - 例子：`let tup: (i32, f64, u8) = (40, 8.3, 1);`
+   - 模式匹配来结构：`let (x, y, z) = tup;`
+   - 索引：`let x = tup.0; let y = tup.1; let z = tup.3`
+2. **数组 array**
+   - 例子：`let arr :[i32; 3] = [1, 2, 3];`
+   - 数组长度是固定的(可变的是 vector)
+   - 所有内容的类型都是一致的
+   - 数组 Rust 存在栈(stack)上
 
 ## 通用集合类型
-这里指std中的类型。这些类型都是保存在堆上
+
+这里指 std 中的类型。这些类型都是保存在堆上
+
 ### String
-String和&str都是以`utf-8`格式所保存(因此涉及到多字节的问题)<br>
+
+String 和&str 都是以`utf-8`格式所保存(因此涉及到多字节的问题)<br>
 这种问题得自己处理
+
 ```rust
 //字面量
 let s = "hello";  //将硬编码到程序中
@@ -61,9 +75,11 @@ let st = s.to_string(); //字面量需要to_string后才是String
 let mut s = String::from("hello");  //存储在堆中
 let mut s = String::with_capacity(10);  //申请容量为10字节的内存
 ```
-> Rust中，String是对`Vec<u8>`对一个封装
 
-**String的增删改查**
+> Rust 中，String 是对`Vec<u8>`对一个封装
+
+**String 的增删改查**
+
 ```rust
 s.push('s');    //push(char)
 s.push_str("ss");   //push(&str)
@@ -79,18 +95,22 @@ let s5 = &"你好"[0..1]  //Error! utf8问题
 for i in &s.chars() {}  //基本上是对于双字节的两字节一个 i，以此类推
 for i in &s.bytes() {}  //每字节一个 i，返回 u8 类型
 ```
-> Rust不允许：`s[1]`，因为utf8和查找效率问题
+
+> Rust 不允许：`s[1]`，因为 utf8 和查找效率问题
 
 ### Vec\<T>
+
 ```rust
 let v:Vec<i32> = Vec::new();
 
 let mut v = vec![1, 2, 3];  //使用宏创建
 ```
-> 若要保存不同类型的，请先定义包含所有需要保存类型的枚举<br>
-> 如果无法枚举需要保存的类型，请使用triat
 
-**Vec的增删改查**
+> 若要保存不同类型的，请先定义包含所有需要保存类型的枚举<br>
+> 如果无法枚举需要保存的类型，请使用 triat
+
+**Vec 的增删改查**
+
 ```rust
 //增
 v.push(1);  //有mut的才行
@@ -116,8 +136,11 @@ let i = match v.get(2) {
   }
 };
 ```
+
 > 注意，**有增(&, 非&mut)则不能有查，有查则不能有增**
+
 ### HashMap
+
 ```rust
 use std::collections::HashMap;
 
@@ -127,10 +150,12 @@ let mut hmap = HashMap::new();
 let value = vec![1, 2];
 let hmap: HashMap<_, _> = vec!["k1", "k2"].iter().zip(value).collect();
 ```
-> HashMap和Vec一样，是同质的(即键的类型必须一致，值的类型也必须一致)
-> _ 表示留给 Rust 自动推导
 
-**HashMap的增删改查**
+> HashMap 和 Vec 一样，是同质的(即键的类型必须一致，值的类型也必须一致)
+> \_ 表示留给 Rust 自动推导
+
+**HashMap 的增删改查**
+
 ```rust
 //覆盖
 hmap.insert(String::from("AA"), 12);

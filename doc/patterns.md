@@ -1,9 +1,11 @@
 # 模式
+
 [返回](../README.md)
 
 模式是 Rust 中特殊的语法, 它用于匹配类型中的结构, 无论类型是简单还是复杂
 
 ### 模式可以存在的位置
+
 1. match 分支
 2. if let 条件表达式
 3. while let 条件循环
@@ -11,9 +13,10 @@
 5. let 语句
 6. 函数参数
 
-> 1-4参看(../src/process_control.rs), 5-6参看(../src/main.rs)
+> 1-4 参看(../src/process_control.rs), 5-6 参看(../src/main.rs)
 
 ### 两种形式
+
 1. 不可反驳的(irrefutable): 能匹配任何传递的可能值的模式
 2. 可反驳的(refutable): 对某些可能的值进行匹配会失败的模式
 
@@ -21,7 +24,9 @@
 if let 和 while let 表达式只能接受可反驳的模式. 因为根据定义他们需要处理可能的失败: 根据成功或失败执行不同的操作
 
 ### 语法
+
 #### 匹配字面值
+
 ```rust
 let x = 1;
 match x {
@@ -31,6 +36,7 @@ match x {
 ```
 
 #### 匹配命名变量
+
 ```rust
 let mut s = String::new();
 match io::stdin().read_line(&mut s) {
@@ -40,6 +46,7 @@ match io::stdin().read_line(&mut s) {
 ```
 
 #### 多个模式
+
 ```rust
 let x = 1;
 match x {
@@ -50,7 +57,9 @@ match x {
 ```
 
 #### 范围匹配
+
 只能用于 数字/char 类型
+
 ```rust
 let x = 5;
 match x {
@@ -61,7 +70,9 @@ match x {
 ```
 
 #### 解构
+
 ###### 结构体
+
 ```rust
 struct Point {
   x: i32,
@@ -78,6 +89,7 @@ match p {
 ```
 
 ###### 枚举
+
 ```rust
 enum Message {
   Quit,
@@ -101,6 +113,7 @@ match msg {
 ```
 
 ###### 嵌套的解构
+
 ```rust
 // 嵌套的枚举和结构体
 match msg {
@@ -118,7 +131,9 @@ let ((feet, inches), Point {x, y}) = ((3, 10), Point { x: 3, y: -10 });
 ```
 
 #### 忽略值
+
 ###### 忽略
+
 ```rust
 let (x, _) = (1, 2);
 let _x = 1;
@@ -130,6 +145,7 @@ fn foo(_: i32, y: i32) {
 ```
 
 ###### 省略
+
 ```rust
 let (x, .., y) = (1, 2, 3, 4, 5, 6);
 ```

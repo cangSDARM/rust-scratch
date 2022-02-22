@@ -73,10 +73,10 @@ fn _notify(item: impl Summary, _item2: impl Summary + PartialOrd) {
 ///
 /// 另一种写法：
 ///   ```rust
-///   fn _nofified<T, U>(t:T, u:T) -> i32
+///   fn _notified<T, U>(t:T, u:T) -> i32
 ///     where T: Display + Summary, U: Display + Debug{}
 ///   ```
-fn _nofified<T: Summary>(item: T) {
+fn _notified<T: Summary>(item: T) {
   println!("{}", item.summary())
 }
 
@@ -85,7 +85,7 @@ fn _nofified<T: Summary>(item: T) {
 /// 缺点是只适用于返回单一类型的情况
 ///   ```rust
 ///   // 这样会报错，无法实现 单态化或类似的东西
-///   fn _nofifily(switch: bool) -> impl Summary{
+///   fn _notifily(switch: bool) -> impl Summary{
 ///     if switch{
 ///       return News{};
 ///     } else {
@@ -93,7 +93,7 @@ fn _nofified<T: Summary>(item: T) {
 ///     }
 ///   }
 ///   ```
-fn _nofifily(item: impl Summary) -> impl Summary {
+fn _notifily(item: impl Summary) -> impl Summary {
   item
 }
 
@@ -159,7 +159,7 @@ impl AssociatedTypes for String {
 /// 其优先级: self上的函数 -> 编译器第一个编译的类型 -> ...
 /// 
 /// 方法可以使用 Human::fly 这种来限定;
-/// 关联函数需要用 完全限定语法(fully qualified syntax)
+/// 关联函数需要用 完全限定语法
 trait Pilot {
   fn fly(&self);
 }
