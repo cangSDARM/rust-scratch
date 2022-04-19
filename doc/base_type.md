@@ -64,6 +64,8 @@
 String 和&str 都是以`utf-8`格式所保存(因此涉及到多字节的问题)<br>
 这种问题得自己处理
 
+[String 的一些基础](http://liubin.org/blog/2022/04/01/rust-string-literals/?utm_source=tuicool&utm_medium=referral)
+
 ```rust
 //字面量
 let s = "hello";  //将硬编码到程序中
