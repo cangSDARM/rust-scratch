@@ -191,6 +191,14 @@ let y = &String::from("hello");
 assert_eq!("hello", *y);
 ```
 
+**引用取决于使用位置还有 ref 关键字**
+
+```rust
+let x = 5;
+let y = &x;
+let ref z = x;  //同y
+```
+
 ## Slice。切片
 
 slice 允许引用集合中一段**连续的**元素序列，而不用引用整个集合。slice 也**不会变更所有权**
