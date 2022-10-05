@@ -85,3 +85,9 @@ let sum = x + y;  //Error!
   | [Example](https://github.com/kekeimiku/msrs)<br>
 - [Rust Magazine](https://rustmagazine.github.io/rust_magazine_2021/index.html)<br>
 - [Rust in embedded](https://docs.rust-embedded.org/)
+
+## 例子
+
+- [ip scanner(threads and mpsc)](https://github.com/tensor-programming/Rust_Port_Sniffer)
+- [chat(server/client with raw TcpConnection)](https://github.com/tensor-programming/Rust_client-server_chat)
+- [webpage crawler(async and threads)](https://github.com/tensor-programming/crawler_example)
