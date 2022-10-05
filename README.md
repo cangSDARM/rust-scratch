@@ -44,46 +44,48 @@ let sum = x + y;  //Error!
 
 ## 结构
 
-- doc<br>
-  | [Cargo](./doc/cargo.md)<br>
-  | [模块化](./doc/modularize.md)<br>
-  | [基础数据类型](./doc/base_type.md)<br>
-  | [高级数据类型](./doc/advanced_type.md)<br>
-  | [所有权 Ownership](./doc/ownership.md)<br>
-  | [结构体(Rust 中的对象)](./doc/structure.md)<br>
-  | [枚举(Rust 中对结构体的更高级封装?)](./doc/enums.md)<br>
-  | [错误处理](./doc/error_handle.md)<br>
-  | [自动化测试](./doc/auto_testing.md)<br>
-  | [模式匹配](./doc/patterns.md)<br>
-  | [unsafe 及 extern 块](./doc/unsafe.md)<br>
-  | [宏。宏小册, 2017ver](https://www.bookstack.cn/read/DaseinPhaos-tlborm-chinese/README.md)<br>
-- src<br>
-  | [基础语法](./src/main.rs)<br>
-  | [流程控制](./src/process_control.rs)<br>
-  | [trait](./src/traits.rs)、[生命周期](./src/lifecricle.rs)以及[泛型](./src/generics.rs)<br>
-  | [匿名函数及闭包、函数指针](./src/anonymous_function.rs)<br>
-  | [迭代器](./src/iterator.rs)<br>
-  | [智能指针](./src/smart_pointer.rs)<br>
-  | [并发](./src/concurrent.rs)<br>
-  | [在 Rust 中"面向对象"](./src/oo.rs)<br>
+- doc
+  - [Cargo](./doc/cargo.md)
+  - [模块化](./doc/modularize.md)
+  - [基础数据类型](./doc/base_type.md)
+  - [高级数据类型](./doc/advanced_type.md)
+  - [所有权 Ownership](./doc/ownership.md)
+  - [结构体(Rust 中的对象)](./doc/structure.md)
+  - [枚举(Rust 中对结构体的更高级封装?)](./doc/enums.md)
+  - [错误处理](./doc/error_handle.md)
+  - [自动化测试](./doc/auto_testing.md)
+  - [模式匹配](./doc/patterns.md)
+  - [unsafe 及 extern 块](./doc/unsafe.md)
+  - [宏。宏小册, 2017ver](https://www.bookstack.cn/read/DaseinPhaos-tlborm-chinese/README.md)
+- src
+  - [基础语法](./src/main.rs)
+  - [流程控制](./src/process_control.rs)
+  - [trait](./src/traits.rs)、[生命周期](./src/lifecricle.rs)以及[泛型](./src/generics.rs)
+  - [匿名函数及闭包、函数指针](./src/anonymous_function.rs)
+  - [迭代器](./src/iterator.rs)
+  - [智能指针](./src/smart_pointer.rs)
+  - 并发和并行
+    - [线程，并行](./src/threads.rs)
+    - [异步，并发](./src/async.rs)
+  - [在 Rust 中"面向对象"](./src/oo.rs)
 
 ## 更多参考
 
-- [The Rustonomicon](https://github.com/rust-lang/nomicon)<br>
-- [async book](https://github.com/rust-lang/async-book)<br>
-- [Rust Cookbook](https://github.com/rust-lang-nursery/rust-cookbook)<br>
-- [The Rust and WebAssembly Book](https://github.com/rustwasm/book)<br>
-- [Learn Rust by writing Entirely Too Many Linked Lists](https://github.com/rust-unofficial/too-many-lists)<br>
-- [The Cargo Book](https://github.com/rust-lang/cargo/tree/master/src/doc/src)<br>
-- [Rust Compiler Error Index](https://doc.rust-lang.org/error-index.html)<br>
-- [Some helpful hints](https://chercher.tech/rust/errors-in-rust)<br>
-- [Gof Design Patterns](https://github.com/lpxxn/rust-design-pattern)<br>
-- [Godot Rust Example](https://github.com/fringelin/godot_rust_example)<br>
+- [The Rustonomicon](https://github.com/rust-lang/nomicon)
+- [async book](https://github.com/rust-lang/async-book)
+- [Rust Cookbook](https://github.com/rust-lang-nursery/rust-cookbook)
+- [The Rust and WebAssembly Book](https://github.com/rustwasm/book)
+- [Learn Rust by writing Entirely Too Many Linked Lists](https://github.com/rust-unofficial/too-many-lists)
+- [The Cargo Book](https://github.com/rust-lang/cargo/tree/master/src/doc/src)
+- [Rust Compiler Error Index](https://doc.rust-lang.org/error-index.html)
+- [Some helpful hints](https://chercher.tech/rust/errors-in-rust)
+- [Gof Design Patterns](https://github.com/lpxxn/rust-design-pattern)
+- [Godot Rust Example](https://github.com/fringelin/godot_rust_example)
 - MS Rust<br>
   | [Intro](https://docs.microsoft.com/en-us/windows/dev-environment/rust/rust-for-windows)<br>
   | [Doc](https://microsoft.github.io/windows-docs-rs/doc)<br>
   | [Example](https://github.com/kekeimiku/msrs)<br>
-- [Rust Magazine](https://rustmagazine.github.io/rust_magazine_2021/index.html)<br>
+- [Rust Magazine](https://rustmagazine.github.io/rust_magazine_2021/index.html)
 - [Rust in embedded](https://docs.rust-embedded.org/)
 
 ## 例子
